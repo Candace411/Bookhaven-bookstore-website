@@ -232,27 +232,52 @@ document.addEventListener("DOMContentLoaded", function() {
 
   <!-- Scripts -->
 <script>
-// Newsletter subscription
-window.addEventListener("load", function() {
-    const subscribeBtn = document.getElementById("subscribeBtn");
-    const emailInputField = document.getElementById("newsletterEmail");
+document.addEventListener("DOMContentLoaded", function() {
+    // Customer Form
+    const form = document.getElementById("customerForm");
+    const display = document.getElementById("submittedInfo");
 
-    if(!subscribeBtn || !emailInputField) return; // safety check
+    if(localStorage.getItem("customerData")) {
+        const saved = JSON.parse(localStorage.getItem("customerData"));
+        display.innerHTML = `
+            <p><strong>Name:</strong> ${saved.name}</p>
+            <p><strong>Email:</strong> ${saved.email}</p>
+            <p><strong>Phone:</strong> ${saved.phone}</p>
+            <p><strong>Message:</strong> ${saved.message}</p>
+        `;
+    }
 
-    subscribeBtn.addEventListener("click", function() {
-        const email = emailInputField.value.trim();
-        if(email === "") {
-            alert("Please enter your email before subscribing.");
-            return;
-        }
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const data = {
+            name: document.getElementById("customerName").value.trim(),
+            email: document.getElementById("customerEmail").value.trim(),
+            phone: document.getElementById("customerPhone").value.trim(),
+            message: document.getElementById("customerMessage").value.trim()
+        };
+        localStorage.setItem("customerData", JSON.stringify(data));
+        display.innerHTML = `
+            <p><strong>Name:</strong> ${data.name}</p>
+            <p><strong>Email:</strong> ${data.email}</p>
+            <p><strong>Phone:</strong> ${data.phone}</p>
+            <p><strong>Message:</strong> ${data.message}</p>
+        `;
+        form.reset();
+    });
+
+    // Subscribe button
+    document.getElementById("subscribeBtn").addEventListener("click", function() {
+        const email = document.getElementById("newsletterEmail").value.trim();
+        if(email === "") { alert("Please enter your email before subscribing."); return; }
         alert(`Thank you for subscribing, ${email}!`);
         localStorage.setItem("subscribedEmail", email);
-        emailInputField.value = ""; // clear input
+        document.getElementById("newsletterEmail").value = "";
     });
 });
 </script>
 </body>
 </html>
+
 
 
 
