@@ -232,42 +232,48 @@ document.addEventListener("DOMContentLoaded", function() {
 
  <!-- Footer -->
 <footer>
-    <!-- Subscribe -->
     <div>
         <input type="email" id="newsletterEmail" placeholder="Enter your email">
         <button id="subscribeBtn">Subscribe</button>
     </div>
-
-    <!-- Social Media -->
     <div style="margin-bottom: 10px;">
         <a href="#" target="_blank">Facebook</a> |
         <a href="#" target="_blank">Instagram</a> |
         <a href="#" target="_blank">Twitter</a>
     </div>
-
-    <!-- Navigation -->
     <div>
         <a href="index.html">Home</a> |
         <a href="gallery.html">Gallery</a> |
         <a href="about.html">About Us</a> |
         <a href="custom.html">Custom Page</a>
     </div>
-
-    <p class="caption" style="margin-top: 10px; color:#131C26; font-weight:bold;">© 2026 Book Haven Bookstore</p>
+    <p class="caption" style="margin-top:10px; color:#131C26; font-weight:bold;">© 2026 Book Haven Bookstore</p>
 </footer>
 
+<!-- Subscribe Script -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const subscribeBtn = document.getElementById("subscribeBtn");
-    subscribeBtn.addEventListener("click", function() {
-        alert("Thank you for subscribing!");
-    });
+    const newsletterInput = document.getElementById("newsletterEmail");
+
+    if(subscribeBtn && newsletterInput) {
+        subscribeBtn.addEventListener("click", function() {
+            const email = newsletterInput.value.trim();
+            if(email === "") {
+                alert("Please enter your email before subscribing.");
+                return;
+            }
+            alert(`Thank you for subscribing, ${email}!`);
+            localStorage.setItem("subscribedEmail", email);
+            newsletterInput.value = "";
+        });
+    }
 });
 </script>
 
-
 </body>
 </html>
+
 
 
 
