@@ -155,7 +155,7 @@
     </div>
     <p style="margin-top:10px; color:#131C26; font-weight:bold;">© 2026 Book Haven Bookstore</p>
 </footer>
-
+    
 <!-- Cart Modal -->
 <div id="cartModal" class="modal">
 <div class="modal-content">
@@ -230,26 +230,33 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-    <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const subscribeBtn = document.getElementById("subscribeBtn");
-    if(subscribeBtn) {
+  <!-- Scripts -->
+<script>
+(function() {
+    // Make sure the DOM is fully loaded
+    window.addEventListener("load", function() {
+        const subscribeBtn = document.getElementById("subscribeBtn");
+        const emailInputField = document.getElementById("newsletterEmail");
+
+        if(!subscribeBtn || !emailInputField) return; // safety check
+
         subscribeBtn.addEventListener("click", function() {
-            const emailInput = document.getElementById("newsletterEmail").value.trim();
-            if(emailInput === "") {
+            const email = emailInputField.value.trim();
+            if(email === "") {
                 alert("Please enter your email before subscribing.");
                 return;
             }
-            alert(`Thank you for subscribing, ${emailInput}!`);
-            localStorage.setItem("subscribedEmail", emailInput);
-            document.getElementById("newsletterEmail").value = "";
+            alert(`Thank you for subscribing, ${email}!`);
+            localStorage.setItem("subscribedEmail", email);
+            emailInputField.value = ""; // clear input
         });
-    }
-});
+    });
+})();
 </script>
 
 </body>
 </html>
+
 
 
 
