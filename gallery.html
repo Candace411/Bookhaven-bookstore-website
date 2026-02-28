@@ -230,8 +230,27 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const subscribeBtn = document.getElementById("subscribeBtn");
+    if(subscribeBtn) {
+        subscribeBtn.addEventListener("click", function() {
+            const emailInput = document.getElementById("newsletterEmail").value.trim();
+            if(emailInput === "") {
+                alert("Please enter your email before subscribing.");
+                return;
+            }
+            alert(`Thank you for subscribing, ${emailInput}!`);
+            localStorage.setItem("subscribedEmail", emailInput);
+            document.getElementById("newsletterEmail").value = "";
+        });
+    }
+});
+</script>
+
 </body>
 </html>
+
 
 
 
