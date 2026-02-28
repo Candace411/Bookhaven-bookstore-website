@@ -253,9 +253,10 @@ document.addEventListener("DOMContentLoaded", function() {
 <!-- Subscribe Script -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+
+    // Subscribe Button
     const subscribeBtn = document.getElementById("subscribeBtn");
     const newsletterInput = document.getElementById("newsletterEmail");
-
     if(subscribeBtn && newsletterInput) {
         subscribeBtn.addEventListener("click", function() {
             const email = newsletterInput.value.trim();
@@ -268,11 +269,11 @@ document.addEventListener("DOMContentLoaded", function() {
             newsletterInput.value = "";
         });
     }
-});
 </script>
 
 </body>
 </html>
+
 
 
 
