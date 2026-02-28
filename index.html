@@ -153,54 +153,64 @@
     </div>
     <p class="caption" style="margin-top:10px; color:#131C26; font-weight:bold;">© 2026 Book Haven Bookstore</p>
 </footer>
- <!-- Scripts -->
-    <script>
+ <script>
 document.addEventListener("DOMContentLoaded", function() {
     // Customer Form
     const form = document.getElementById("customerForm");
     const display = document.getElementById("submittedInfo");
 
-    if(localStorage.getItem("customerData")) {
-        const saved = JSON.parse(localStorage.getItem("customerData"));
-        display.innerHTML = `
-            <p><strong>Name:</strong> ${saved.name}</p>
-            <p><strong>Email:</strong> ${saved.email}</p>
-            <p><strong>Phone:</strong> ${saved.phone}</p>
-            <p><strong>Message:</strong> ${saved.message}</p>
-        `;
+    if(form && display) { // Only run this if the form exists
+        if(localStorage.getItem("customerData")) {
+            const saved = JSON.parse(localStorage.getItem("customerData"));
+            display.innerHTML = `
+                <p><strong>Name:</strong> ${saved.name}</p>
+                <p><strong>Email:</strong> ${saved.email}</p>
+                <p><strong>Phone:</strong> ${saved.phone}</p>
+                <p><strong>Message:</strong> ${saved.message}</p>
+            `;
+        }
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const data = {
+                name: document.getElementById("customerName").value.trim(),
+                email: document.getElementById("customerEmail").value.trim(),
+                phone: document.getElementById("customerPhone").value.trim(),
+                message: document.getElementById("customerMessage").value.trim()
+            };
+            localStorage.setItem("customerData", JSON.stringify(data));
+            display.innerHTML = `
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Phone:</strong> ${data.phone}</p>
+                <p><strong>Message:</strong> ${data.message}</p>
+            `;
+            form.reset();
+        });
     }
 
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
-        const data = {
-            name: document.getElementById("customerName").value.trim(),
-            email: document.getElementById("customerEmail").value.trim(),
-            phone: document.getElementById("customerPhone").value.trim(),
-            message: document.getElementById("customerMessage").value.trim()
-        };
-        localStorage.setItem("customerData", JSON.stringify(data));
-        display.innerHTML = `
-            <p><strong>Name:</strong> ${data.name}</p>
-            <p><strong>Email:</strong> ${data.email}</p>
-            <p><strong>Phone:</strong> ${data.phone}</p>
-            <p><strong>Message:</strong> ${data.message}</p>
-        `;
-        form.reset();
-    });
+    // Subscribe button (always attach, since it exists on every page)
+    const subscribeBtn = document.getElementById("subscribeBtn");
+    const newsletterInput = document.getElementById("newsletterEmail");
 
-    // Subscribe button
-    document.getElementById("subscribeBtn").addEventListener("click", function() {
-        const email = document.getElementById("newsletterEmail").value.trim();
-        if(email === "") { alert("Please enter your email before subscribing."); return; }
-        alert(`Thank you for subscribing, ${email}!`);
-        localStorage.setItem("subscribedEmail", email);
-        document.getElementById("newsletterEmail").value = "";
-    });
+    if(subscribeBtn && newsletterInput) {
+        subscribeBtn.addEventListener("click", function() {
+            const email = newsletterInput.value.trim();
+            if(email === "") { 
+                alert("Please enter your email before subscribing."); 
+                return; 
+            }
+            alert(`Thank you for subscribing, ${email}!`);
+            localStorage.setItem("subscribedEmail", email);
+            newsletterInput.value = "";
+        });
+    }
 });
 </script>
 
 </body>
 </html>
+
 
 
 
