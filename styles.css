@@ -1,0 +1,297 @@
+/* ===== GENERAL BODY STYLES ===== */
+body {
+    font-family: Calibri, sans-serif;
+    font-size: 16px;
+    color: #131C26;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+h1.title {
+    font-size: 30px;
+    color: #131C26;
+    text-align: center;
+}
+
+h2 {
+    font-size: 25px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p, li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Header links */
+header nav a {
+    color: #131C26;  /* dark text */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+header nav a:hover {
+    color: #0074D9;
+}
+
+/* View Cart button */
+#viewCart {
+    background-color: #222;  /* black button */
+    color: #fff;             /* white text */
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#viewCart:hover {
+    background-color: #444;
+}
+
+/* ===== MAIN SECTIONS ===== */
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+.promo-banner {
+    background-color: #ffcc00;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* ===== PRODUCT GRID ===== */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.product {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    width: calc(33% - 10px);
+    text-align: center;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* ===== GALLERY TABLE ===== */
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 15px;
+    text-align: center;
+}
+
+td img {
+    width: 150px;
+    height: auto;
+}
+
+/* ===== BUTTONS (ALL PAGES) ===== */
+button, #clearCart, #processOrder, #subscribeBtn {
+    background-color: #222;  /* black button */
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+}
+
+button:hover, #clearCart:hover, #processOrder:hover, #subscribeBtn:hover {
+    background-color: #444;  /* slightly lighter dark on hover */
+}
+
+/* ===== ADD TO CART BUTTON SPECIFIC ===== */
+.add-to-cart {
+    background-color: #222;  /* black */
+    color: #ffffff !important; /* force white text */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px 0;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #444;  /* slightly lighter black */
+    color: #ffffff !important; /* keep text white on hover */
+}
+
+/* ===== FORM ELEMENTS ===== */
+input[type="text"], input[type="email"], textarea {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* ===== LISTS ===== */
+#highlights ul, #perks ul, #categories ul {
+    list-style: disc inside;
+    padding-left: 0;
+}
+
+#highlights li, #perks li, #categories li {
+    margin-bottom: 5px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer input[type="email"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 5px;
+    width: 200px;
+}
+
+footer nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+footer nav a:hover {
+    text-decoration: underline;
+}
+
+footer .social-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+footer .social-links a:hover {
+    text-decoration: underline;
+    
+footer .caption {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #131C26; /* dark gray / blackish for visibility */
+    margin-top: 10px;
+
+
+/* ===== Modal Styles ===== */
+.modal {
+    display: none; /* hidden by default */
+    position: fixed; 
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* semi-transparent background */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #0074D9;
+}
+
+#cartModal button {
+    background-color: #222;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+#cartModal button:hover {
+    background-color: #444;
+
+}
+
+/* ===== TYPOGRAPHY CLASSES ===== */
+.title { font-family: Arial, sans-serif; font-size: 25px; font-weight: bold; text-align: center; margin-bottom: 15px; }
+.subtitle { font-family: 'Comfortaa', sans-serif; font-size: 15px; font-weight: normal; color: #131C26; }
+.body-large { font-family: Calibri, sans-serif; font-size: 20px; font-weight: normal; color: #131C26; }
+.body-strong { font-family: Calibri, sans-serif; font-size: 16px; font-weight: bold; color: #131C26; }
+.body { font-family: Calibri, sans-serif; font-size: 16px; font-weight: normal; color: #131C26; }
+.caption { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; color: #fff; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .product-grid {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .product {
+        width: 100%;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav {
+        margin-top: 10px;
+    }
+}
