@@ -232,30 +232,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
   <!-- Scripts -->
 <script>
-(function() {
-    // Make sure the DOM is fully loaded
-    window.addEventListener("load", function() {
-        const subscribeBtn = document.getElementById("subscribeBtn");
-        const emailInputField = document.getElementById("newsletterEmail");
+// Newsletter subscription
+window.addEventListener("load", function() {
+    const subscribeBtn = document.getElementById("subscribeBtn");
+    const emailInputField = document.getElementById("newsletterEmail");
 
-        if(!subscribeBtn || !emailInputField) return; // safety check
+    if(!subscribeBtn || !emailInputField) return; // safety check
 
-        subscribeBtn.addEventListener("click", function() {
-            const email = emailInputField.value.trim();
-            if(email === "") {
-                alert("Please enter your email before subscribing.");
-                return;
-            }
-            alert(`Thank you for subscribing, ${email}!`);
-            localStorage.setItem("subscribedEmail", email);
-            emailInputField.value = ""; // clear input
-        });
+    subscribeBtn.addEventListener("click", function() {
+        const email = emailInputField.value.trim();
+        if(email === "") {
+            alert("Please enter your email before subscribing.");
+            return;
+        }
+        alert(`Thank you for subscribing, ${email}!`);
+        localStorage.setItem("subscribedEmail", email);
+        emailInputField.value = ""; // clear input
     });
-})();
+});
 </script>
-
 </body>
 </html>
+
 
 
 
