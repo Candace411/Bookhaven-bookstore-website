@@ -151,54 +151,19 @@
         <a href="about.html">About Us</a> |
         <a href="custom.html">Custom Page</a>
     </div>
-    <p class="caption" style="margin-top:10px; color:#131C26; font-weight:bold;">© 2026 Book Haven Bookstore</p>
+    <p style="margin-top:10px; color:#131C26; font-weight:bold;">© 2026 Book Haven Bookstore</p>
 </footer>
+
+<!-- Subscribe Script -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // --- Customer Form (only if it exists) ---
-    const form = document.getElementById("customerForm");
-    const display = document.getElementById("submittedInfo");
-
-    if (form && display) {
-        // Load saved data if available
-        if (localStorage.getItem("customerData")) {
-            const saved = JSON.parse(localStorage.getItem("customerData"));
-            display.innerHTML = `
-                <p><strong>Name:</strong> ${saved.name}</p>
-                <p><strong>Email:</strong> ${saved.email}</p>
-                <p><strong>Phone:</strong> ${saved.phone}</p>
-                <p><strong>Message:</strong> ${saved.message}</p>
-            `;
-        }
-
-        // Handle form submission
-        form.addEventListener("submit", function(e) {
-            e.preventDefault();
-            const data = {
-                name: document.getElementById("customerName").value.trim(),
-                email: document.getElementById("customerEmail").value.trim(),
-                phone: document.getElementById("customerPhone").value.trim(),
-                message: document.getElementById("customerMessage").value.trim()
-            };
-            localStorage.setItem("customerData", JSON.stringify(data));
-            display.innerHTML = `
-                <p><strong>Name:</strong> ${data.name}</p>
-                <p><strong>Email:</strong> ${data.email}</p>
-                <p><strong>Phone:</strong> ${data.phone}</p>
-                <p><strong>Message:</strong> ${data.message}</p>
-            `;
-            form.reset();
-        });
-    }
-
-    // --- Subscribe Button (attach always) ---
     const subscribeBtn = document.getElementById("subscribeBtn");
     const newsletterInput = document.getElementById("newsletterEmail");
 
-    if (subscribeBtn && newsletterInput) {
+    if(subscribeBtn && newsletterInput) {
         subscribeBtn.addEventListener("click", function() {
             const email = newsletterInput.value.trim();
-            if (email === "") {
+            if(email === "") {
                 alert("Please enter your email before subscribing.");
                 return;
             }
@@ -212,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
 
 
 
