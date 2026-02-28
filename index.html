@@ -153,14 +153,15 @@
     </div>
     <p class="caption" style="margin-top:10px; color:#131C26; font-weight:bold;">© 2026 Book Haven Bookstore</p>
 </footer>
- <script>
+<script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Customer Form
+    // --- Customer Form (only if it exists) ---
     const form = document.getElementById("customerForm");
     const display = document.getElementById("submittedInfo");
 
-    if(form && display) { // Only run this if the form exists
-        if(localStorage.getItem("customerData")) {
+    if (form && display) {
+        // Load saved data if available
+        if (localStorage.getItem("customerData")) {
             const saved = JSON.parse(localStorage.getItem("customerData"));
             display.innerHTML = `
                 <p><strong>Name:</strong> ${saved.name}</p>
@@ -170,6 +171,7 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
         }
 
+        // Handle form submission
         form.addEventListener("submit", function(e) {
             e.preventDefault();
             const data = {
@@ -189,16 +191,16 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Subscribe button (always attach, since it exists on every page)
+    // --- Subscribe Button (attach always) ---
     const subscribeBtn = document.getElementById("subscribeBtn");
     const newsletterInput = document.getElementById("newsletterEmail");
 
-    if(subscribeBtn && newsletterInput) {
+    if (subscribeBtn && newsletterInput) {
         subscribeBtn.addEventListener("click", function() {
             const email = newsletterInput.value.trim();
-            if(email === "") { 
-                alert("Please enter your email before subscribing."); 
-                return; 
+            if (email === "") {
+                alert("Please enter your email before subscribing.");
+                return;
             }
             alert(`Thank you for subscribing, ${email}!`);
             localStorage.setItem("subscribedEmail", email);
@@ -210,6 +212,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
 
 
 
