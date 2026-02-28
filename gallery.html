@@ -83,55 +83,55 @@
 
 <table>
 <tr>
-<td data-price="12.99">
-<img src="brie-mine.png" alt="brie mine book" width="150"><br>
-             <p>Brie Mine</p>
-<button class="add-to-cart body-strong" data-item="brie mine">Add to Cart</button>
-</td>
-<td data-price="9.99">
-<img src="glory-riders.png" alt="glory riders book" width="150"><br>
+    <td data-price="12.99">
+        <img src="brie-mine.png" alt="brie mine book" width="150"><br>
+        <p>Brie Mine</p>
+        <button class="add-to-cart body-strong" data-item="brie mine">Add to Cart</button>
+    </td>
+    <td data-price="9.99">
+        <img src="glory-riders.png" alt="glory riders book" width="150"><br>
         <p>Glory Riders</p>
-<button class="add-to-cart body-strong" data-item="glory riders">Add to Cart</button>
-</td>
-<td data-price="11.99">
-<img src="sorcerors.png" alt="sorcerors book" width="150"><br>
+        <button class="add-to-cart body-strong" data-item="glory riders">Add to Cart</button>
+    </td>
+    <td data-price="11.99">
+        <img src="sorcerors.png" alt="sorcerors book" width="150"><br>
         <p>Sorceror's</p>
-<button class="add-to-cart body-strong" data-item="sorcerors">Add to Cart</button>
-</td>
-<td data-price="10.99">
-<img src="ball.png" alt="ball book" width="150"><br>
+        <button class="add-to-cart body-strong" data-item="sorcerors">Add to Cart</button>
+    </td>
+    <td data-price="10.99">
+        <img src="ball.png" alt="ball book" width="150"><br>
         <p>Ball</p>
-<button class="add-to-cart body-strong" data-item="ball">Add to Cart</button>
-</td>
+        <button class="add-to-cart body-strong" data-item="ball">Add to Cart</button>
+    </td>
 </tr>
 <tr>
-<td data-price="8.99">
-<img src="travel.png" alt="travel book" width="150"><br>
+    <td data-price="8.99">
+        <img src="travel.png" alt="travel book" width="150"><br>
         <p>Travel</p>
-<button class="add-to-cart body-strong" data-item="travel">Add to Cart</button>
-</td>
-<td data-price="7.99">
-<img src="eat.png" alt="eat book" width="150"><br>
+        <button class="add-to-cart body-strong" data-item="travel">Add to Cart</button>
+    </td>
+    <td data-price="7.99">
+        <img src="eat.png" alt="eat book" width="150"><br>
         <p>Eat</p>
-<button class="add-to-cart body-strong" data-item="eat">Add to Cart</button>
-</td>
-<td data-price="13.99">
-<img src="tote.png" alt="tote book" width="150"><br>
+        <button class="add-to-cart body-strong" data-item="eat">Add to Cart</button>
+    </td>
+    <td data-price="13.99">
+        <img src="tote.png" alt="tote book" width="150"><br>
         <p>Tote Book</p>
-<button class="add-to-cart body-strong" data-item="tote">Add to Cart</button>
-</td>
-<td data-price="14.99">
-<img src="notebook.png" alt="notebook book" width="150"><br>
+        <button class="add-to-cart body-strong" data-item="tote">Add to Cart</button>
+    </td>
+    <td data-price="14.99">
+        <img src="notebook.png" alt="notebook book" width="150"><br>
         <p>Notebook</p>
-<button class="add-to-cart body-strong" data-item="notebook">Add to Cart</button>
-</td>
+        <button class="add-to-cart body-strong" data-item="notebook">Add to Cart</button>
+    </td>
 </tr>
 <tr>
-<td data-price="3.99">
-<img src="stickers.png" alt="stickers" width="150"><br>
+    <td data-price="3.99">
+        <img src="stickers.png" alt="stickers" width="150"><br>
         <p>Stickers</p>
-<button class="add-to-cart body-strong" data-item="stickers">Add to Cart</button>
-</td>
+        <button class="add-to-cart body-strong" data-item="stickers">Add to Cart</button>
+    </td>
 </tr>
 </table>
 </main>
@@ -167,6 +167,7 @@
 </div>
 </div>
 
+<!-- Cart Script -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
@@ -179,16 +180,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const clearCartBtn = document.getElementById("clearCart");
     const processOrderBtn = document.getElementById("processOrder");
 
+    // Add to cart
     addToCartButtons.forEach(button => {
         button.addEventListener("click", function() {
             const itemName = this.dataset.item;
-            const itemPrice = this.closest('td').dataset.price || 0;
+            const itemPrice = this.closest('td').dataset.price;
             cart.push({ name: itemName, price: itemPrice });
             sessionStorage.setItem('cart', JSON.stringify(cart));
             alert(`"${itemName}" added to the cart.`);
         });
     });
 
+    // View cart modal
     viewCart.addEventListener("click", function() {
         cartItems.innerHTML = "";
         if(cart.length === 0) {
@@ -203,6 +206,7 @@ document.addEventListener("DOMContentLoaded", function() {
         cartModal.style.display = "block";
     });
 
+    // Close modal
     closeModal.addEventListener("click", function() {
         cartModal.style.display = "none";
     });
@@ -227,6 +231,8 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 </body>
-
 </html>
+
+
+
 
