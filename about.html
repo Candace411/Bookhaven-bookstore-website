@@ -135,8 +135,14 @@ document.addEventListener("DOMContentLoaded", function() {
 <!-- Footer -->
 <footer style="text-align: center; padding: 20px; background-color: #f0f0f0;">
     <div style="margin-bottom: 10px;">
-        <input type="email" id="newsletterEmail" placeholder="Enter your email">
-        <button id="subscribeBtn">Subscribe</button>
+       <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const subscribeBtn = document.getElementById("subscribeBtn");
+    subscribeBtn.addEventListener("click", function() {
+        alert("Thank you for subscribing!");
+    });
+});
+</script>
     </div>
     <div style="margin-bottom: 10px;">
         <a href="#" target="_blank">Facebook</a> |
@@ -154,6 +160,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
 
 
 
