@@ -32,6 +32,21 @@
         padding: 10px;
         border-radius: 5px;
     }
+    footer input, footer button {
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-right: 5px;
+    }
+    footer button {
+        background-color: #131C26;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    footer button:hover {
+        background-color: #444;
+    }
 </style>
 </head>
 <body>
@@ -90,8 +105,34 @@
     <div id="submittedInfo"></div>
 </main>
 
+<!-- Footer -->
+<footer style="text-align: center; padding: 20px; background-color: #f0f0f0;">
+    <!-- Newsletter Subscribe Section -->
+    <div style="margin-bottom: 10px;">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email">
+        <button id="subscribeBtn">Subscribe</button>
+    </div>
+
+    <div style="margin-bottom: 10px;">
+        <a href="#" target="_blank">Facebook</a> |
+        <a href="#" target="_blank">Instagram</a> |
+        <a href="#" target="_blank">Twitter</a>
+    </div>
+
+    <div>
+        <a href="index.html">Home</a> |
+        <a href="gallery.html">Gallery</a> |
+        <a href="about.html">About Us</a> |
+        <a href="custom.html">Custom Page</a>
+    </div>
+
+    <p class="caption" style="margin-top:10px; color:#131C26; font-weight:bold;">© 2026 Book Haven Bookstore</p>
+</footer>
+
+<!-- Scripts -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+    // Customer form submission
     const form = document.getElementById("customerForm");
     const nameInput = document.getElementById("customerName");
     const emailInput = document.getElementById("customerEmail");
@@ -99,7 +140,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const messageInput = document.getElementById("customerMessage");
     const display = document.getElementById("submittedInfo");
 
-    // Load saved data from localStorage
     if(localStorage.getItem("customerData")) {
         const savedData = JSON.parse(localStorage.getItem("customerData"));
         display.innerHTML = `
@@ -110,7 +150,6 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
     }
 
-    // Save new data to localStorage
     form.addEventListener("submit", function(e) {
         e.preventDefault();
         const customerData = {
@@ -129,16 +168,8 @@ document.addEventListener("DOMContentLoaded", function() {
         `;
         form.reset();
     });
-});
-<!-- Footer -->
-<footer style="text-align: center; padding: 20px; background-color: #f0f0f0;">
-    <div style="margin-bottom: 10px;">
-        <!-- Newsletter Subscribe Section -->
-        <input type="email" id="newsletterEmail" placeholder="Enter your email">
-        <button id="subscribeBtn">Subscribe</button>
-    </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
+
+    // Newsletter subscription
     const subscribeBtn = document.getElementById("subscribeBtn");
     subscribeBtn.addEventListener("click", function() {
         const emailInput = document.getElementById("newsletterEmail").value.trim();
@@ -147,31 +178,14 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
         alert(`Thank you for subscribing, ${emailInput}!`);
-        // Optional: Save email in localStorage
         localStorage.setItem("subscribedEmail", emailInput);
-        document.getElementById("newsletterEmail").value = ""; // Clear input
+        document.getElementById("newsletterEmail").value = "";
     });
 });
 </script>
-    </div>
-    <div style="margin-bottom: 10px;">
-        <a href="#" target="_blank">Facebook</a> |
-        <a href="#" target="_blank">Instagram</a> |
-        <a href="#" target="_blank">Twitter</a>
-    </div>
-    <div>
-        <a href="index.html">Home</a> |
-        <a href="gallery.html">Gallery</a> |
-        <a href="about.html">About Us</a> |
-        <a href="custom.html">Custom Page</a>
-    </div>
-    <p class="caption" style="margin-top:10px; color:#131C26; font-weight:bold;">© 2026 Book Haven Bookstore</p>
-</footer>
 
 </body>
 </html>
-
-
 
 
 
